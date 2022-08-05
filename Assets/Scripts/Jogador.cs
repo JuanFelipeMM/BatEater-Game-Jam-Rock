@@ -11,7 +11,7 @@ public class Jogador : MonoBehaviour
     private SpriteRenderer sprite;
     public bool fimJogo = false;
     public float xRange = 2.0f;
-
+    public bool facingRight=true;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,7 @@ public class Jogador : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
+        animar();
     }
 
     private void FixedUpdate()
@@ -45,4 +46,29 @@ public class Jogador : MonoBehaviour
         }
     }
 
+    public void animar()
+    {
+        if (horizontal==0) { 
+            GetComponent<ControladorAnimJogador>().playAnimation("Idle");
+        }
+        else
+        {
+            if (horizontal>0 && !facingRight)
+            {
+                Flip();  
+            }
+            if (horizontal<0 && facingRight)
+            {
+                Flip();
+            }
+            GetComponent<ControladorAnimJogador>().playAnimation("Walking");
+        }
+    }
+
+    void Flip()
+    {
+        Vector2 currentScale = gameObject.transform.localScale; 
+        currentScale.x *= -1; gameObject.transform.localScale = currentScale;
+        facingRight = !facingRight;
+    }
 }
