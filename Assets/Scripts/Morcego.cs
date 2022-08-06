@@ -11,6 +11,8 @@ public class Morcego : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
+        transform.GetChild(0).gameObject.GetComponent<Animator>().SetBool("Caindo", false);
         cima = true;
         baixo = false;
     }
@@ -43,6 +45,8 @@ public class Morcego : MonoBehaviour
     {
         if (transform.position.y>=7) {
             GetComponent<Transform>().position=(new Vector2(Random.Range(-4f,4f),6.5f));
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+            transform.GetChild(0).gameObject.GetComponent<Animator>().SetBool("Caindo", true);
             this.baixo = true;
             this.cima = false;
         }
