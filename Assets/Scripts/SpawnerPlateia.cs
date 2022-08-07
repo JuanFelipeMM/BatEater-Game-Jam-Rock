@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnerPlateia : MonoBehaviour
 {
     float intervalo;
-    float comeco = 0f;
+    float comeco;
     public GameObject morcegoPrefab;
     public GameObject lixoPrefab;
     BoxCollider2D m_Collider;
@@ -18,6 +18,7 @@ public class SpawnerPlateia : MonoBehaviour
     void Start()
     {
         intervalo = Random.Range(1, 4);
+        comeco = Random.Range(1, 4);
         limitePos = 0.5f;
         m_Collider = GetComponent<BoxCollider2D>();
         xMin = m_Collider.bounds.min.x+ limitePos;

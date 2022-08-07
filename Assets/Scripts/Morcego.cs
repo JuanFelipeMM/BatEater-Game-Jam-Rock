@@ -8,10 +8,11 @@ public class Morcego : MonoBehaviour
     bool baixo;
     int pontuacao = 100;
     public float speed=3f;
+    public GameObject sangue;
     // Start is called before the first frame update
     void Start()
     {
-        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
+        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.3f);
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetBool("Caindo", false);
         cima = true;
         baixo = false;
@@ -63,6 +64,8 @@ public class Morcego : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && baixo==true)
         {
+
+            Instantiate(sangue,new Vector3(collision.gameObject.transform.position.x, 0.758f, 1f),Quaternion.identity);
             GameObject.FindWithTag("Score").GetComponent<Score>().scorePoint += pontuacao;
             Destroy(this.gameObject);
         }

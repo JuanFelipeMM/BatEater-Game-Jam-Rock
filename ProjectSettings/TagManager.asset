@@ -8,6 +8,9 @@ TagManager:
   - Lixo
   - Score
   - GameOver
+  - Sangue
+  - SonsLixo
+  - SonsJogo
   layers:
   - Default
   - TransparentFX

@@ -7,10 +7,12 @@ public class Lixo : MonoBehaviour
     bool cima;
     bool baixo;
     public float speed = 3f;
+    public GameObject sonsLixo;
+
     // Start is called before the first frame update
     void Start()
     {
-        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
+        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.3f);
         transform.GetChild(0).gameObject.GetComponent<Animator>().SetBool("Caindo", false);
         cima = true;
         baixo = false;
@@ -68,6 +70,7 @@ public class Lixo : MonoBehaviour
                 collision.GetComponent<Vida>().health -= 1;
                 
             }
+            Instantiate(sonsLixo);
             Destroy(this.gameObject);
         }
 

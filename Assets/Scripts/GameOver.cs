@@ -7,6 +7,8 @@ public class GameOver : MonoBehaviour
 {
     public GameObject gameOverMenu;
     public GameObject pauseMenu;
+    public GameObject scoreUI;
+    public GameObject sonsJogo;
     public static bool isGameOver;
     void Start()
     {
@@ -19,15 +21,16 @@ public class GameOver : MonoBehaviour
     {
         if (isGameOver)
         {
-            pauseGame();
-            pauseMenu.SetActive(false);
-            
-            GameObject.FindWithTag("GameOver").GetComponent<Score>().scorePoint = GameObject.FindWithTag("Score").GetComponent<Score>().scorePoint;
+            pauseGame();            
+            GameObject.FindWithTag("GameOver").GetComponent<Score>().scorePoint = scoreUI.GetComponent<Score>().scorePoint;
+            scoreUI.GetComponent<Score>().textScore.text="";
+
         }
     }
 
     public void pauseGame()
     {
+        sonsJogo.GetComponent<AudioSource>().volume = 0.2f;
         gameOverMenu.SetActive(true);
         Time.timeScale = 0;
         isGameOver = true;
@@ -35,6 +38,7 @@ public class GameOver : MonoBehaviour
 
     public void resumeGame()
     {
+        sonsJogo.GetComponent<AudioSource>().volume = 1f;
         gameOverMenu.SetActive(false);
         Time.timeScale = 1;
         isGameOver = false;
@@ -42,10 +46,14 @@ public class GameOver : MonoBehaviour
 
     public void restart()
     {
+        sonsJogo.GetComponent<AudioSource>().volume = 1f;
+        Time.timeScale = 1;
         SceneManager.LoadScene("GamePlay");
     }
     public void backMenu()
     {
+
+        Time.timeScale = 1;
         SceneManager.LoadScene("TelaTitulo");
     }
 }

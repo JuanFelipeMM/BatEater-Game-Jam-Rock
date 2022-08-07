@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  sangue: {fileID: 5360676002603469816, guid: 8d975e3f8f043104a976de201c5149c0, type: 3}
 --- !u!61 &3440746687468145879
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60,7 +61,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.006989002, y: 0.0069889426}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -69,9 +70,9 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2935343, y: 0.48282087}
   m_EdgeRadius: 0
 --- !u!1001 &3961893762381175821
 PrefabInstance:
