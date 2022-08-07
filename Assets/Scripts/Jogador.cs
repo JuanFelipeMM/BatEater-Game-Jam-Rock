@@ -22,13 +22,13 @@ public class Jogador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        animar();
+            horizontal = Input.GetAxis("Horizontal");
+            animar(); 
     }
 
     private void FixedUpdate()
     {
-        mover();
+            mover();
     }
     void mover()
     {
@@ -48,21 +48,24 @@ public class Jogador : MonoBehaviour
 
     public void animar()
     {
-        if (horizontal==0) { 
-            GetComponent<ControladorAnimJogador>().playAnimation("Idle");
-        }
-        else
-        {
-            if (horizontal>0 && !facingRight)
+            if (horizontal == 0)
             {
-                Flip();  
+                GetComponent<ControladorAnimJogador>().playAnimation("Idle");
             }
-            if (horizontal<0 && facingRight)
+            else
             {
-                Flip();
+                if (horizontal > 0 && !facingRight)
+                {
+                    print("Entrou>0");
+                    Flip();
+                }
+                if (horizontal < 0 && facingRight)
+                {
+                    print("Entrou<0");
+                    Flip();
+                }
+                GetComponent<ControladorAnimJogador>().playAnimation("Walking");
             }
-            GetComponent<ControladorAnimJogador>().playAnimation("Walking");
-        }
     }
 
     void Flip()
